@@ -1,0 +1,33 @@
+kumuluzee:
+  datasources:
+    - jndi-name: jdbc/PolygonsDS
+      connection-url: jdbc:postgresql://localhost:5432/polygons
+      username: postgres
+      password: postgres
+      pool:
+        max-size: 5
+  persistence-units:
+    - name: "polygon"
+      continue-on-error: false
+  openapi:
+    ui:
+      enabled: true
+    spec:
+      enabled: true
+  health:
+    servlet:
+      mapping: /health
+      enabled: true
+    logs:
+      enabled: true
+      level: INFO
+      period-s: 30
+    checks:
+      data-source-health-check:
+        jndi-name: jdbc/PolygonsDS
+        type: liveliness
+      disk-space-health-check:
+        threshold: 100000000
+      http-health-check:
+        connection-url: https://github.com/potocnikluka/polygon-rest-microservice
+

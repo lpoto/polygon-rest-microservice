@@ -1,0 +1,8 @@
+ObjectStore/*
+target/*
+.settings/*
+.project
+.classpath
+.factorypath
+.config.vim
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.acme.polygon</groupId>
+<artifactId>polygon</artifactId>
+<packaging>jar</packaging>
+<version>1.0-SNAPSHOT</version>
+<name>polygon</name>
+
+<properties>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+	<kumuluzee.version>3.12.2</kumuluzee.version>
+	<kumuluzee-rest.version>1.5.1</kumuluzee-rest.version>
+	<kumuluzee-openapi.version>1.0.0</kumuluzee-openapi.version>
+	<kumuluzee-health.version>2.4.2</kumuluzee-health.version>
+
+	<org.postgresql.version>42.2.24</org.postgresql.version>
+</properties>
+
+<dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>com.kumuluz.ee</groupId>
+			<artifactId>kumuluzee-bom</artifactId>
+			<version>${kumuluzee.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+	</dependencies>
+</dependencyManagement>
+
+<dependencies>
+	<dependency>
+		<groupId>com.kumuluz.ee</groupId>
+		<artifactId>kumuluzee-core</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee</groupId>
+		<artifactId>kumuluzee-servlet-jetty</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee</groupId>
+		<artifactId>kumuluzee-jax-rs-jersey</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee</groupId>
+		<artifactId>kumuluzee-cdi-weld</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee</groupId>
+		<artifactId>kumuluzee-jpa-hibernate</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee</groupId>
+		<artifactId>kumuluzee-jta-narayana</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee.rest</groupId>
+		<artifactId>kumuluzee-rest-core</artifactId>
+		<version>${kumuluzee-rest.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee.openapi</groupId>
+		<artifactId>kumuluzee-openapi</artifactId>
+		<version>${kumuluzee-openapi.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee.openapi</groupId>
+		<artifactId>kumuluzee-openapi-ui</artifactId>
+		<version>${kumuluzee-openapi.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.kumuluz.ee.health</groupId>
+		<artifactId>kumuluzee-health</artifactId>
+		<version>${kumuluzee-health.version}</version>
+	</dependency>
+
+
+	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>${org.postgresql.version}</version>
+	</dependency>
+</dependencies>
+
+<build>
+	<plugins>
+		<plugin>
+			<groupId>com.kumuluz.ee</groupId>
+			<artifactId>kumuluzee-maven-plugin</artifactId>
+			<version>${kumuluzee.version}</version>
+			<executions>
+				<execution>
+					<id>package</id>
+					<goals>
+						<goal>repackage</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+</project>

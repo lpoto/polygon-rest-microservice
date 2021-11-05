@@ -1,0 +1,8 @@
+{
+  "project_artifactId": "${project.artifactId}",
+  "name": "${project.name}",
+  "maven_group_id": "${project.groupId}",
+  "maven_artifact_id": "${project.parent.artifactId}",
+  "maven_version": "${project.version}",
+  "git_commit_id": "${buildNumber}"
+}

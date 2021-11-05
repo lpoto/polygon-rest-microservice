@@ -1,20 +1,30 @@
-package com.acme.polygon;
+package com.polygon.rest.models;
 
 import java.util.List;
 import javax.persistence.*;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+/**
+ * Polygon class
+ *
+ * @author Luka Potočnik
+ * @since 1.0.0
+ */
 @Entity
 @Table(name="polygon")
 public class Polygon implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Schema(hidden=true)
 	private Integer id;
 
 	@Column(name="name", nullable=false)
+	@Schema(example="New polygon", required=true)
 	private String name;
 
 	@Column(name="length")
+	@Schema(hidden=true)
 	private Integer length;
 
 	@OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
@@ -22,32 +32,28 @@ public class Polygon implements java.io.Serializable {
 	private List<Coordinate> coordinates;
 
 	public Integer getId() {
-		return this.id;
-	}
-
-	public Integer setId(Integer newId) {
-		return this.id;
+		return id;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
-	public void setName(String newName) {
-		this.name = newName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<Coordinate> getCoordinates() {
-		return this.coordinates;
+		return coordinates;
 	}
 
-	public void setCoordinates(List<Coordinate> newCoordinates) {
-		this.coordinates = newCoordinates;
+	public void setCoordinates(List<Coordinate> coordinates) {
+		this.coordinates = coordinates;
 		setLength(null);
 	}
 
 	public Integer getLength() {
-		return this.length;
+		return length;
 	}
 
 	private void setLength(Integer x) {

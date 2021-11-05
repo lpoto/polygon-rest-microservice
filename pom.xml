@@ -1,107 +1,220 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-<modelVersion>4.0.0</modelVersion>
-<groupId>com.acme.polygon</groupId>
-<artifactId>polygon</artifactId>
-<packaging>jar</packaging>
-<version>1.0-SNAPSHOT</version>
-<name>polygon</name>
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-<properties>
-	<maven.compiler.source>1.8</maven.compiler.source>
-	<maven.compiler.target>1.8</maven.compiler.target>
-	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-	<kumuluzee.version>3.12.2</kumuluzee.version>
-	<kumuluzee-rest.version>1.5.1</kumuluzee-rest.version>
-	<kumuluzee-openapi.version>1.0.0</kumuluzee-openapi.version>
-	<kumuluzee-health.version>2.4.2</kumuluzee-health.version>
-
-	<org.postgresql.version>42.2.24</org.postgresql.version>
-</properties>
-
-<dependencyManagement>
-	<dependencies>
-		<dependency>
-			<groupId>com.kumuluz.ee</groupId>
-			<artifactId>kumuluzee-bom</artifactId>
-			<version>${kumuluzee.version}</version>
-			<type>pom</type>
-			<scope>import</scope>
-		</dependency>
-	</dependencies>
-</dependencyManagement>
-
-<dependencies>
-	<dependency>
-		<groupId>com.kumuluz.ee</groupId>
-		<artifactId>kumuluzee-core</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee</groupId>
-		<artifactId>kumuluzee-servlet-jetty</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee</groupId>
-		<artifactId>kumuluzee-jax-rs-jersey</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee</groupId>
-		<artifactId>kumuluzee-cdi-weld</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee</groupId>
-		<artifactId>kumuluzee-jpa-hibernate</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee</groupId>
-		<artifactId>kumuluzee-jta-narayana</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee.rest</groupId>
-		<artifactId>kumuluzee-rest-core</artifactId>
-		<version>${kumuluzee-rest.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee.openapi</groupId>
-		<artifactId>kumuluzee-openapi</artifactId>
-		<version>${kumuluzee-openapi.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee.openapi</groupId>
-		<artifactId>kumuluzee-openapi-ui</artifactId>
-		<version>${kumuluzee-openapi.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>com.kumuluz.ee.health</groupId>
-		<artifactId>kumuluzee-health</artifactId>
-		<version>${kumuluzee-health.version}</version>
-	</dependency>
-
-
-	<dependency>
-		<groupId>org.postgresql</groupId>
-		<artifactId>postgresql</artifactId>
-		<version>${org.postgresql.version}</version>
-	</dependency>
-</dependencies>
-
-<build>
-	<plugins>
-		<plugin>
-			<groupId>com.kumuluz.ee</groupId>
-			<artifactId>kumuluzee-maven-plugin</artifactId>
-			<version>${kumuluzee.version}</version>
-			<executions>
-				<execution>
-					<id>package</id>
-					<goals>
-						<goal>repackage</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-	</plugins>
-</build>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>polygon-rest-microservice</artifactId>
+    <groupId>com.polygon.rest</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Polygon rest microservice</name>
+    <!-- -->
+    <scm>
+        <connection>
+        scm:git:git@github.com:potocnikluka/polygon-rest-microservice.git</connection>
+        <developerConnection>
+        scm:git:git@github.com:potocnikluka/polygon-rest-microservice.git</developerConnection>
+        <url>
+        git@github.com:potocnikluka/polygon-rest-microservice.git</url>
+    </scm>
+    <!-- -->
+    <developers>
+        <developer>
+            <name>Luka Potočnik</name>
+            <id>potocnikluka</id>
+            <email>luka.potochnik@gmail.com</email>
+            <url>https://github.com/potocnikluka</url>
+        </developer>
+    </developers>
+    <!-- -->
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>
+            http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+    <!-- -->
+    <modules>
+        <module>api</module>
+        <module>services</module>
+        <module>models</module>
+    </modules>
+    <!-- -->
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshots</name>
+            <url>
+            https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <!-- -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshots</name>
+            <url>
+            https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <!-- -->
+    <properties>
+        <project.build.sourceEncoding>
+        UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <!-- -->
+        <buildnumber-maven-plugin.version>
+        1.4</buildnumber-maven-plugin.version>
+        <!-- -->
+        <kumuluzee.version>3.12.2</kumuluzee.version>
+        <kumuluzee-rest.version>1.5.1</kumuluzee-rest.version>
+        <kumuluzee-openapi.version>
+        1.1.0-SNAPSHOT</kumuluzee-openapi.version>
+        <kumuluzee-health.version>2.4.2</kumuluzee-health.version>
+        <kumuluzee-security.version>
+        1.2.0</kumuluzee-security.version>
+        <kumuluzee-logs.version>
+        1.5.0-SNAPSHOT</kumuluzee-logs.version>
+        <kumuluzee-version.version>
+        1.2.0-SNAPSHOT</kumuluzee-version.version>
+        <!-- -->
+        <keycloak.version>5.0.0</keycloak.version>
+        <org.postgresql.version>42.2.24</org.postgresql.version>
+        <org.slf4j.version>1.7.25</org.slf4j.version>
+    </properties>
+    <!-- -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-bom</artifactId>
+                <version>${kumuluzee.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- -->
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-cor</artifactId>
+                <version>${kumuluzee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-cdi-weld</artifactId>
+                <version>${kumuluzee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-jax-rs-jersey</artifactId>
+                <version>${kumuluzee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.rest</groupId>
+                <artifactId>kumuluzee-rest-core</artifactId>
+                <version>${kumuluzee-rest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-servlet-jetty</artifactId>
+                <version>${kumuluzee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-jpa-hibernate</artifactId>
+                <version>${kumuluzee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.openapi</groupId>
+                <artifactId>kumuluzee-openapi</artifactId>
+                <version>${kumuluzee-openapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.openapi</groupId>
+                <artifactId>kumuluzee-openapi-ui</artifactId>
+                <version>${kumuluzee-openapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.security</groupId>
+                <artifactId>
+                kumuluzee-security-keycloak</artifactId>
+                <version>${kumuluzee-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.health</groupId>
+                <artifactId>kumuluzee-health</artifactId>
+                <version>${kumuluzee-health.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.logs</groupId>
+                <artifactId>kumuluzee-logs-log4j2</artifactId>
+                <version>${kumuluzee-logs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-json-p-jsonp</artifactId>
+                <version>${kumuluzee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.version</groupId>
+                <artifactId>kumuluzee-version</artifactId>
+                <version>${kumuluzee-version.version}</version>
+            </dependency>
+            <!-- -->
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-jetty94-adapter</artifactId>
+                <version>${keycloak.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${org.postgresql.version}</version>
+            </dependency>
+            <!-- -->
+            <dependency>
+                <groupId>com.polygon.rest</groupId>
+                <artifactId>
+                polygon-rest-microservice-models</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.polygon.rest</groupId>
+                <artifactId>
+                polygon-rest-microservice-services</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.polygon.rest</groupId>
+                <artifactId>
+                polygon-rest-microservice-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <!-- these will be inherited by all modules -->
+    <dependencies>
+        <dependency>
+            <groupId>com.kumuluz.ee.openapi</groupId>
+            <artifactId>kumuluzee-openapi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee.openapi</groupId>
+            <artifactId>kumuluzee-openapi-ui</artifactId>
+        </dependency>
+    </dependencies>
 </project>

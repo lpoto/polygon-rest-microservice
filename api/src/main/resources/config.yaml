@@ -1,0 +1,54 @@
+kumuluzee:
+  name: polygon-rest-microservice
+  env:
+    name: dev
+  server:
+    base-url: http://localhost:8080
+  http:
+    port: 8080
+
+  version: 1.0.0-SNAPSHOT
+  version-info:
+    endpoint: /version
+
+  datasources:
+    - jndi-name: jdbc/PolygonsDS
+      connection-url: jdbc:postgresql://localhost:5432/polygons
+      username: postgres
+      password: postgres
+      pool:
+        max-size: 5
+
+  security:
+    keycloak:
+      realm: "polygon-realm"
+      bearer-only: true
+      auth-server-url: "http://localhost:8082/auth"
+      ssl-required: "external"
+      resource: "polygon-api"
+
+  health:
+    servlet:
+      mapping: /health
+      enabled: true
+    logs:
+      enabled:
+        false
+        #level: INFO
+        #period-s: 3600
+    checks:
+      data-source-health-check:
+        jndi-name: jdbc/PolygonsDS
+      disk-space-health-check:
+        threshold: 100000000
+      http-health-check:
+        - connection-url: "http://localhost:8082/auth"
+        - connection-url: "http://localhost:8080/api-specs/v1/openapi.json"
+        - connection-url: "http://localhost:8080/api-specs/ui"
+  openapi:
+    enabled: true
+    ui:
+      enabled: true
+
+rest-config:
+  auth-connect-url: "http://localhost:8082/auth/realms/polygon-realm/protocol/openid-connect/token"

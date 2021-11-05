@@ -1,8 +1,78 @@
-ObjectStore/*
-target/*
-.settings/*
-.project
-.classpath
-.factorypath
-.config.vim
+**/*.class
 
+# Eclipse
+**/.classpath
+**/.project
+**/.settings/
+*.launch
+
+# Intellij
+**/.idea/*
+**/*.iml
+**/*.iws
+**/out/
+**/artifacts/
+
+# Mac
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+
+# Maven
+**/log/
+**/target/ 
+
+
+**/ObjectStore/
+**/.factorypath
+**/logs
+**/libs
+
+*.
+**/*.texlipse
+**/*.buildpath
+**/*.cproject
+**/*.externalToolBuilders/
+**/.
+
+# files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+# Windows shortcuts
+*.lnk
